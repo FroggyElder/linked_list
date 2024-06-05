@@ -27,7 +27,7 @@ bool llDestoryList (struct ll_node* head) {
     struct ll_node* current = head;
     struct ll_node* next = head->next;
 
-    while (1) {
+    while (current!=NULL) {
         next = current->next;
         free(current);
         current = next;

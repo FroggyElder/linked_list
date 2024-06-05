@@ -15,8 +15,7 @@ int studentAgeCmp (struct student a,struct student b) {
 }
 
 int main () {
-    struct student temp_student;
-    struct ll_node* list0 = llNewNode(temp_student);
+    struct ll_node* list0 = llNewHead();
 
     for (int i=5;i>=0;--i) {
         struct student temp;
@@ -27,6 +26,7 @@ int main () {
 
     llPrint(list0,studentPrint);
 
+    struct student temp_student;
     temp_student.age = 23;
     strcpy(temp_student.name,"clone3");
     llDeleteByVal(list0,temp_student,studentFullCmp);

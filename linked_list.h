@@ -18,6 +18,8 @@ struct ll_node {
 
 struct ll_node* llNewNode (LL_ELEM_TYPE data);
 
+struct ll_node* llNewHead ();
+
 bool llDestoryList (struct ll_node* head);
 
 bool llInsertAfter (struct ll_node* node,LL_ELEM_TYPE data);

@@ -7,9 +7,17 @@ struct ll_node* llNewNode (LL_ELEM_TYPE data) {
         return NULL;
     }
 
-    new_node->next = NULL;
     new_node->data = data;
 
+    return new_node;
+}
+
+struct ll_node* llNewHead () {
+    LL_ELEM_TYPE empty;
+    struct ll_node* new_node = llNewNode(empty);
+    if (new_node==NULL) return NULL;
+
+    new_node->next = NULL;
     return new_node;
 }
 

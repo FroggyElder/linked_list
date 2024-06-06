@@ -86,8 +86,8 @@ bool llReverse (struct ll_node* head) {
         prev=current;
         current=next;
     };
-    head->next = current;
 
+    head->next = current;
     return true;
 }
 

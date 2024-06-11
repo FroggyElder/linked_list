@@ -37,6 +37,7 @@ bool llDestoryList (struct ll_node* head) {
 }
 
 void llInsertBetween (struct ll_node* prev,struct ll_node* node,struct ll_node* next){
+    if(prev==NULL||node==NULL) return;
     prev->next = node;
     node->next = next;
 }
@@ -62,6 +63,7 @@ bool llInsertAtTail (struct ll_node* node,LL_ELEM_TYPE data) {
 }
 
 void llDeleteNode (struct ll_node* prev, struct ll_node* node,struct ll_node* next) {
+    if(prev==NULL) return;
     prev->next = next;
     free(node);
 }

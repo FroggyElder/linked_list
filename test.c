@@ -36,4 +36,6 @@ int main () {
     llDeleteByVal(list0,temp_student,studentAgeCmp);
 
     llPrint(list0,studentPrint);
+
+    llDestoryList(list0);
 }

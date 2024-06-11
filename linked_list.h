@@ -28,6 +28,8 @@ bool llInsertAtTail (struct ll_node* node,LL_ELEM_TYPE data);
 
 bool llDeleteByVal (struct ll_node* head,LL_ELEM_TYPE data,int (* llCmp)(LL_ELEM_TYPE a,LL_ELEM_TYPE b));
 
+bool llReverse (struct ll_node* head);
+
 void llPrint (struct ll_node* head,void (* print) (LL_ELEM_TYPE data));
 
 #endif //_LINKED_LIST_H

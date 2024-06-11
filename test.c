@@ -34,7 +34,9 @@ int main () {
 
     temp_student.age = 25;
     llDeleteByVal(list0,temp_student,studentAgeCmp);
+    llPrint(list0,studentPrint);
 
+    llReverse(list0);
     llPrint(list0,studentPrint);
 
     llDestoryList(list0);

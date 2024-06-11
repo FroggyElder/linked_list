@@ -72,6 +72,25 @@ bool llDeleteByVal (struct ll_node* head,LL_ELEM_TYPE data,int (* llCmp)(LL_ELEM
     return true;
 }
 
+bool llReverse (struct ll_node* head) {
+    if(head==NULL) return false;
+    if(head->next==NULL||head->next->next==NULL) return true;
+
+    struct ll_node* prev = head->next;
+    struct ll_node* current = prev->next;
+    prev->next = NULL;
+    while(1){
+        struct ll_node* next = current->next;
+        current->next = prev;
+        if(next==NULL) break;
+        prev=current;
+        current=next;
+    };
+
+    head->next = current;
+    return true;
+}
+
 void llPrint (struct ll_node* head,void (* print) (LL_ELEM_TYPE data)){
     if (head==NULL) return;
 

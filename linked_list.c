@@ -36,14 +36,18 @@ bool llDestoryList (struct ll_node* head) {
     return true;
 }
 
+void llInsertBetween (struct ll_node* prev,struct ll_node* node,struct ll_node* next){
+    prev->next = node;
+    node->next = next;
+}
+
 bool llInsertAfter (struct ll_node* node,LL_ELEM_TYPE data) {
     if (node==NULL) return false;
 
     struct ll_node* new_node = llNewNode(data);
     if(new_node==NULL) return false;
 
-    new_node->next = node->next;
-    node->next = new_node;
+    llInsertBetween(node,new_node,node->next);
 
     return true;
 }
@@ -57,18 +61,21 @@ bool llInsertAtTail (struct ll_node* node,LL_ELEM_TYPE data) {
     return llInsertAfter(p,data);
 }
 
+void llDeleteNode (struct ll_node* prev, struct ll_node* node,struct ll_node* next) {
+    prev->next = next;
+    free(node);
+}
+
 bool llDeleteByVal (struct ll_node* head,LL_ELEM_TYPE data,int (* llCmp)(LL_ELEM_TYPE a,LL_ELEM_TYPE b)) {
     if(head == NULL||head->next==NULL) return false;
 
-    struct ll_node* p = head->next;
+    struct ll_node* p = head;
     while (llCmp(p->next->data,data)!=0) {
         p=p->next;
         if(p->next==NULL) return false;
     }
 
-    struct ll_node* q = p->next;
-    p->next = q->next;
-    free(q);
+    llDeleteNode(p,p->next,p->next->next);
     return true;
 }
 
@@ -101,4 +108,27 @@ void llPrint (struct ll_node* head,void (* print) (LL_ELEM_TYPE data)){
     }
 
     printf("\n");
+}
+
+void llSort (struct ll_node* head,int (* llCmp)(LL_ELEM_TYPE a,LL_ELEM_TYPE b),struct ll_node* end) {
+    if(head==NULL||head==end) return;
+    if(head->next==end||head->next->next==end) return;
+
+    //init 2 pointers
+    struct ll_node* p = head->next;
+    struct ll_node* q = p->next;
+    struct ll_node* r = q->next;
+    p->next = end;
+
+    //go throuch all effective data after the first
+    while (1) {
+        if(llCmp(p->data,q->data)<0) llInsertBetween(p,q,p->next);
+        else llInsertBetween(head,q,head->next);
+        if(r==end) break;
+        q = r;
+        r = r->next;
+    }
+
+    llSort(head,llCmp,p->next);
+    llSort(p,llCmp,end);
 }

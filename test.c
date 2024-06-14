@@ -31,19 +31,27 @@ int main () {
 
     llSort(list0,studentAgeCmp,NULL);
     llPrint(list0,studentPrint);
-    llSort(list0,studentAgeRCmp,NULL);
-    llPrint(list0,studentPrint);
 
-    temp_student.age = 55;
-    strcpy(temp_student.name,"Walta");
-    llDeleteByVal(list0,temp_student,studentFullCmp);
-    llPrint(list0,studentPrint);
+    // temp_student.age = 55;
+    // strcpy(temp_student.name,"Walta");
+    // llDeleteByVal(list0,temp_student,studentFullCmp);
+    // llPrint(list0,studentPrint);
 
-    temp_student.age = 24;
-    llDeleteByVal(list0,temp_student,studentAgeCmp);
-    llPrint(list0,studentPrint);
+    // temp_student.age = 24;
+    // llDeleteByVal(list0,temp_student,studentAgeCmp);
+    // llPrint(list0,studentPrint);
 
-    llReverse(list0);
+    // llReverse(list0);
+    // llPrint(list0,studentPrint);
+
+    struct ll_node* list1 = llNewHead();
+
+    strcpy(temp_student.name,"Tony"); temp_student.age = 78; llInsertAfter(list1,temp_student);
+    strcpy(temp_student.name,"Mike"); temp_student.age = 34; llInsertAfter(list1,temp_student);
+    strcpy(temp_student.name,"Kim"); temp_student.age = 14; llInsertAfter(list1,temp_student);
+    llPrint(list1,studentPrint);
+
+    llSortedMerge(list0,list1,studentAgeCmp);
     llPrint(list0,studentPrint);
 
     llDestoryList(list0);

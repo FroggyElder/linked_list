@@ -134,3 +134,26 @@ void llSort (struct ll_node* head,int (* llCmp)(LL_ELEM_TYPE a,LL_ELEM_TYPE b),s
     llSort(head,llCmp,p->next);
     llSort(p,llCmp,end);
 }
+
+void llSortedMerge(struct ll_node* head0,struct ll_node* head1,int (* llCmp)(LL_ELEM_TYPE a,LL_ELEM_TYPE b)) {
+    struct ll_node* p0 = head0;
+    struct ll_node* p1 = head1;
+
+    while (1) {
+        while (llCmp(p1->next->data,p0->next->data)<=0){
+            llInsertAfter(p0,p1->next->data);
+            p1=p1->next;
+            if(p1->next==NULL) return;
+        }
+        while (p0->next!=NULL&&llCmp(p1->next->data,p0->next->data)>0)
+            p0=p0->next;
+
+        if(p0->next==NULL&&p1->next!=NULL){
+            do {
+                llInsertAfter(p0,p1->next->data);
+                p1=p1->next;
+            }while (p1->next!=NULL);
+            return;
+        }
+    }
+}

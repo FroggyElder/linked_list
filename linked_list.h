@@ -38,4 +38,6 @@ void llPrint (struct ll_node* head,void (* print) (LL_ELEM_TYPE data));
 
 void llSort (struct ll_node* head,int (* llCmp)(LL_ELEM_TYPE a,LL_ELEM_TYPE b),struct ll_node* end);
 
+void llSortedMerge(struct ll_node* head0,struct ll_node* head1,int (* llCmp)(LL_ELEM_TYPE a,LL_ELEM_TYPE b));
+
 #endif //_LINKED_LIST_H

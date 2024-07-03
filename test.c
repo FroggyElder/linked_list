@@ -48,6 +48,7 @@ int main () {
 
     strcpy(temp_student.name,"Tony"); temp_student.age = 78; llInsertAfter(list1,temp_student);
     strcpy(temp_student.name,"Mike"); temp_student.age = 34; llInsertAfter(list1,temp_student);
+    strcpy(temp_student.name,"Scarrlet"); temp_student.age = 26; llInsertAfter(list1,temp_student);
     strcpy(temp_student.name,"Kim"); temp_student.age = 14; llInsertAfter(list1,temp_student);
     llPrint(list1,studentPrint);
 

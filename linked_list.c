@@ -144,6 +144,7 @@ void llSortedMerge(struct ll_node* head0,struct ll_node* head1,int (* llCmp)(LL_
         while (llCmp(p1->next->data,p0->next->data)<=0){
             llInsertAfter(p0,p1->next->data);
             p1=p1->next;
+            p0=p0->next;
             if(p1->next==NULL) return;
         }
         while (p0->next!=NULL&&llCmp(p1->next->data,p0->next->data)>0)

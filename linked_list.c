@@ -116,7 +116,7 @@ void llSort (struct ll_node* head,int (* llCmp)(LL_ELEM_TYPE a,LL_ELEM_TYPE b),s
     if(head==NULL||head==end) return;
     if(head->next==end||head->next->next==end) return;
 
-    //init 2 pointers
+    //init pointers
     struct ll_node* p = head->next;
     struct ll_node* q = p->next;
     struct ll_node* r = q->next;
@@ -131,6 +131,7 @@ void llSort (struct ll_node* head,int (* llCmp)(LL_ELEM_TYPE a,LL_ELEM_TYPE b),s
         r = r->next;
     }
 
+    //rec sort lists
     llSort(head,llCmp,p->next);
     llSort(p,llCmp,end);
 }
